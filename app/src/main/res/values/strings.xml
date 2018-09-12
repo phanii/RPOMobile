@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">RPOMobile</string>
+    <string name="enter_barcode">Enter barcode</string>
+    <string name="add">Add</string>
+    <string name="next">Next</string>
+    <string name="desc">Enter description</string>
+    <string name="totalitems">Total items:</string>
+    <string name="totalquantity">Total Quantity:</string>
+    <string name="total_number_of_items_scanned_so_far">Total number of items scanned so far</string>
+    <string name="total_number_of_quantity">Total number of quantity</string>
+    <string name="checkpermissions">Check application permissions and accept to read the data</string>
+</resources>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "2465386687",
+    "firebase_url": "https://rpomobile.firebaseio.com",
+    "project_id": "rpomobile",
+    "storage_bucket": "rpomobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2465386687:android:c64cbf113280044f",
+        "android_client_info": {
+          "package_name": "com.rpo.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2465386687-mi6rhu7dpn0q4r1amcnq8gnkik50qp92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARdyaLoNbok0nuwuFsX9x7jeQ6CwuNLhc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
