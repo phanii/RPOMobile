@@ -11,6 +11,7 @@ import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetectorOptions
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
+import com.google.gson.Gson
 import com.rpo.mobile.EventJustbarcode
 import com.rpo.mobile.R
 import kotlinx.android.synthetic.main.activity_main_fab.*
@@ -41,18 +42,20 @@ class BarCodeReaderActivity : BaseCameraActivity() {
     private fun getQRCodeDetails(bitmap: Bitmap) {
         val options = FirebaseVisionBarcodeDetectorOptions.Builder()
                 .setBarcodeFormats(
-                        FirebaseVisionBarcode.FORMAT_ALL_FORMATS)
+                        FirebaseVisionBarcode.FORMAT_EAN_13)// here we are going to configure the barcode
                 .build()
         val detector = FirebaseVision.getInstance().getVisionBarcodeDetector(options)
         val image = FirebaseVisionImage.fromBitmap(bitmap)
         detector.detectInImage(image)
                 .addOnSuccessListener {
+                    Log.d("detector", ": success ${Gson().toJson(it)}")
                     for (firebaseBarcode in it) {
 
                         codeData.text = firebaseBarcode.displayValue //Display contents inside the barcode
-                        if (codeData.text.length == 25) {
-                            EventBus.getDefault().post(EventJustbarcode(codeData.text.toString()))
-                        }
+                        Log.d("codeData", ":${codeData.text} ")
+                        // if (codeData.text.length == 25) {
+                        EventBus.getDefault().post(EventJustbarcode(codeData.text.toString()))
+                        // }
 
 
                         when (firebaseBarcode.valueType) {
@@ -69,6 +72,7 @@ class BarCodeReaderActivity : BaseCameraActivity() {
 
                 }
                 .addOnFailureListener {
+                    Log.d("detector", ": fail")
                     it.printStackTrace()
                     Log.d("BCR", ":error ")
                     Toast.makeText(baseContext, "Sorry, something went wrong!", Toast.LENGTH_SHORT).show()
