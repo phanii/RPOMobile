@@ -103,13 +103,14 @@
             android:id="@+id/textView8"
             android:layout_width="0dp"
             android:layout_height="@dimen/dim35dp"
-            android:layout_marginTop="@dimen/dim_dp_16"
+            android:layout_marginTop="16dp"
             android:gravity="center_vertical"
             android:text="@string/username"
             android:textSize="@dimen/dim_sp_14"
             app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline9"
-            app:layout_constraintTop_toTopOf="@+id/guideline4" />
+            app:layout_constraintTop_toBottomOf="@+id/error_message" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline9"
@@ -135,7 +136,6 @@
             android:hint="@string/hint_name"
             android:inputType="textPersonName"
             android:paddingStart="@dimen/dim8dp"
-
             android:singleLine="true"
             app:layout_constraintEnd_toStartOf="@+id/guideline10"
             app:layout_constraintStart_toStartOf="@+id/guideline9"
@@ -162,8 +162,6 @@
             android:elevation="@dimen/dim_dp_2"
             android:ems="10"
             android:hint="@string/hint_password"
-
-
             android:inputType="textPassword"
             android:paddingStart="@dimen/dim8dp"
             android:singleLine="true"
@@ -200,6 +198,20 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline10"
             app:layout_constraintStart_toEndOf="@+id/btn_change_language"
             app:layout_constraintTop_toTopOf="@+id/btn_change_language" />
+
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dim8dp"
+            android:layout_marginStart="@dimen/dim8dp"
+            android:layout_marginTop="@dimen/dim_dp_16"
+            android:textColor="@color/validationError"
+            android:textSize="@dimen/dim_sp_14"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

@@ -6,4 +6,5 @@
     <color name="black">#000000</color>
     <color name="blue1">#2d76bf</color>
     <color name="light_gray">#b4b5b7</color>
+    <color name="validationError">#F6275B</color>
 </resources>
