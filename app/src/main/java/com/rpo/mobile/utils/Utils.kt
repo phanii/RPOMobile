@@ -1,7 +1,9 @@
 package com.rpo.mobile.utils
 
 import android.content.Context
+import android.support.design.widget.Snackbar
 import android.util.Patterns
+import android.view.View
 import android.widget.Toast
 
 class Utils {
@@ -22,5 +24,13 @@ class Utils {
     //Check password with minimum requirement here(it should be minimum 6 characters)
     fun isPasswordValid(password: String): Boolean {
         return password.length >= 6
+    }
+
+    fun showSnackbar(view: View, msg: String) {
+
+        Snackbar.make(view, msg, Snackbar.LENGTH_INDEFINITE)
+                //    .setAction("Retry", View.OnClickListener { listener })
+                .show()
+
     }
 }

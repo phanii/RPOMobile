@@ -4,7 +4,9 @@ import android.app.Application
 import android.content.Context
 import com.pixplicity.easyprefs.library.Prefs
 
+
 class RPOApplication : Application() {
+
     override fun onCreate() {
         super.onCreate()
         Prefs.Builder().setContext(this)
@@ -12,5 +14,8 @@ class RPOApplication : Application() {
                 .setPrefsName(packageName)
                 .setUseDefaultSharedPreference(true)
                 .build()
+
     }
+
+
 }

@@ -189,8 +189,8 @@
             android:id="@+id/btn_user_login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:layout_marginEnd="@dimen/dim8dp"
-            android:layout_marginStart="@dimen/dim8dp"
             android:background="@drawable/background_rect_blue"
             android:elevation="@dimen/dim_dp_6"
             android:text="@string/login"
@@ -214,6 +214,18 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline10"
             app:layout_constraintStart_toStartOf="@+id/guideline9"
             app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+        <TextView
+            android:id="@+id/gsonresult"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text=" "
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toBottomOf="@+id/btn_user_login" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
