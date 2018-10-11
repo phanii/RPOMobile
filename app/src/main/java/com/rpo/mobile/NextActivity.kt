@@ -18,11 +18,11 @@ import java.io.FileOutputStream
 
 
 class NextActivity : AppCompatActivity() {
-    var compoTitle: String? = null
-    var output: Output? = null
+    private var compoTitle: String? = null
+    private var output: Output? = null
 
     companion object {
-        val TAG: String = javaClass.simpleName
+        val TAG: String = NextActivity::class.java.simpleName
     }
 
     private val permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission
@@ -94,7 +94,7 @@ class NextActivity : AppCompatActivity() {
 
         count = count!! + 1
 
-        var outputStream: FileOutputStream? = null
+        var outputStream: FileOutputStream?
         try {
             outputStream = openFileOutput(compoTitle, Context.MODE_PRIVATE)
             outputStream!!.write(content.toByteArray(Charsets.UTF_8))

@@ -45,6 +45,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="TODO"
             app:srcCompat="@drawable/drw_delete" />
 
     </android.support.constraint.ConstraintLayout>

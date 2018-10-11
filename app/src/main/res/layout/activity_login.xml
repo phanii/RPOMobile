@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/constarint_login"
     android:layout_height="match_parent"
     tools:context=".login.Login">
 
@@ -51,7 +50,6 @@
         app:srcCompat="@drawable/logos" />
 
     <android.support.constraint.Group
-        android:id="@+id/group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -70,7 +68,6 @@
         app:layout_constraintGuide_percent="0.70" />
 
     <TextView
-        android:id="@+id/textView5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dim8dp"
@@ -211,7 +208,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/gsonresult"
+        android:id="@+id/gsonresulttext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

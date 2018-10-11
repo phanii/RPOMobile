@@ -8,7 +8,6 @@
     <string name="totalquantity">Total Quantity:</string>
     <string name="total_number_of_items_scanned_so_far">Total number of items scanned so far</string>
     <string name="total_number_of_quantity">Total number of quantity</string>
-    <string name="checkpermissions">Check application permissions and accept to read the data</string>
     <string name="store_manager">Store Manager</string>
     <string name="version">v1.0</string>
     <string name="username">Username</string>
@@ -17,4 +16,10 @@
     <string name="hint_password">password</string>
     <string name="login">Login</string>
     <string name="nonetwork">Network is not available !</string>
+    <string name="required_email">Email is required</string>
+    <string name="valid_email">Enter a valid email</string>
+    <string name="required_password">Password is required</string>
+    <string name="password_chars_min6">Password must contain at least 6 characters</string>
+    <string name="success_login">login success</string>
+    <string name="logindetails_incorrect">Username or Password is incorrect,\nPlease try again.</string>
 </resources>
