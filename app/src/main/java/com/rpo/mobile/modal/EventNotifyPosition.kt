@@ -1,4 +1,4 @@
-package com.rpo.mobile
+package com.rpo.mobile.modal
 
 import com.rpo.mobile.modal.BarcodeBean
 

@@ -1,3 +1,3 @@
-package com.rpo.mobile
+package com.rpo.mobile.modal
 
 class EventCloseData(val information: String)

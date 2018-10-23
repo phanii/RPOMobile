@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.rpo.mobile.EventNotifyPosition
+import com.rpo.mobile.modal.EventNotifyPosition
 import com.rpo.mobile.R
 import com.rpo.mobile.modal.BarcodeBean
 import kotlinx.android.synthetic.main.barcode_row_data.view.*

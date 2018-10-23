@@ -12,7 +12,7 @@ import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetectorOptions
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import com.google.gson.Gson
-import com.rpo.mobile.EventJustbarcode
+import com.rpo.mobile.modal.EventJustbarcode
 import com.rpo.mobile.R
 import kotlinx.android.synthetic.main.activity_main_fab.*
 import kotlinx.android.synthetic.main.layout_qr_code_reader.*

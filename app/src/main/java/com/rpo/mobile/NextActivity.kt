@@ -9,6 +9,7 @@ import android.os.Parcelable
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.google.gson.Gson
+import com.rpo.mobile.modal.EventCloseData
 import com.rpo.mobile.modal.Output
 import com.sembozdemir.permissionskt.askPermissions
 import com.sembozdemir.permissionskt.handlePermissionsResult

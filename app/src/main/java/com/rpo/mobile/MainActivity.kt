@@ -11,6 +11,9 @@ import com.pixplicity.easyprefs.library.Prefs
 import com.rpo.mobile.adapter.BarcodeAdapter
 import com.rpo.mobile.barcodepreview.BarCodeReaderActivity
 import com.rpo.mobile.modal.BarcodeBean
+import com.rpo.mobile.modal.EventCloseData
+import com.rpo.mobile.modal.EventJustbarcode
+import com.rpo.mobile.modal.EventNotifyPosition
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
