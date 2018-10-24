@@ -22,4 +22,7 @@
     <string name="password_chars_min6">Password must contain at least 6 characters</string>
     <string name="success_login">login success</string>
     <string name="logindetails_incorrect">Username or Password is incorrect,\nPlease try again.</string>
+    <string name="sort_by_pos_no">Sort by POS No.</string>
+    <string name="pos_number">POS Number</string>
+    <string name="pos_total">POS Total</string>
 </resources>

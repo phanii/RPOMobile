@@ -6,4 +6,8 @@
     <color name="blue1">#2d76bf</color>
     <color name="light_gray">#b4b5b7</color>
     <color name="validationError">#F6275B</color>
+    <color name="darkgray">#353839</color>
+    <color name="yellow">#b6a11b</color>
+    <color name="yellow_light">#ed635c2e</color>
+    <color name="red">#edc21b31</color>
 </resources>
