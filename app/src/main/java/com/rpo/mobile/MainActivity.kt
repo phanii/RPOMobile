@@ -1,11 +1,16 @@
 package com.rpo.mobile
 
 import android.arch.lifecycle.MutableLiveData
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import android.widget.Toast
 import com.google.gson.Gson
 import com.pixplicity.easyprefs.library.Prefs
@@ -19,12 +24,14 @@ import org.greenrobot.eventbus.ThreadMode
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashSet
+import kotlin.random.Random
 
 
 class MainActivity : AppCompatActivity() {
     companion object {
         val TAG: String = javaClass.simpleName
     }
+
 
     var count: Int? = 0
     var count_: Int? = 0
@@ -63,6 +70,23 @@ class MainActivity : AppCompatActivity() {
         total_ticketvalue!!.observe(this, android.arch.lifecycle.Observer {
 
             total_value.text = it.toString()
+
+        })
+
+        barcodeEntry.setOnEditorActionListener(object : TextView.OnEditorActionListener {
+            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    if (isNullOrEmpty(barcodeEntry.text.toString())) {
+                        addtoList(barcodeEntry.text.toString())
+
+                    } else {
+                        Toast.makeText(this@MainActivity, "Enter Barcode number", Toast.LENGTH_SHORT).show()
+                    }
+                    closeKeyboard()
+                    return true
+                }
+                return false
+            }
 
         })
 
@@ -108,10 +132,11 @@ class MainActivity : AppCompatActivity() {
     private fun addtoList(barcodenumber: String) {
 //        fabProgressCircle.show()
         afterUniqueset.clear()
+        val price = Random.nextInt(100)
 
-        barcodeBeanList?.add(BarcodeBean(barcodenumber, 1))
+        barcodeBeanList?.add(BarcodeBean(barcodenumber, price))
 
-        count_ = count_!!.plus(1)
+        count_ = count_!!.plus(price)
         total_ticketvalue?.value = count_
 
 
@@ -121,12 +146,13 @@ class MainActivity : AppCompatActivity() {
 
         for (temp in uniqueSet) {
             //  Log.d(TAG, "$temp: ---> ${Collections.frequency(barcodeBeanList, temp)}")
-            afterUniqueset.add(BarcodeBean(temp.barcode, Collections.frequency(barcodeBeanList, temp)))
+            afterUniqueset.add(BarcodeBean(temp.barcode, temp.quantity))
         }
         //fabProgressCircle.hide()
         //have to sort the list and remove the value from main list
         // uniqueSet.clear()
     }
+
 
     private fun loadData() {
         recyView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -177,7 +203,7 @@ class MainActivity : AppCompatActivity() {
     }
 //subscriber get the value from adatpter and process the things
 
-    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    @Subscribe(threadMode = ThreadMode.MAIN)
     fun onReceiveEventNotifyPosition(eventNotifyPosition: EventNotifyPosition) {
 
         removeFromList(eventNotifyPosition.bb)
@@ -194,21 +220,27 @@ class MainActivity : AppCompatActivity() {
     //remove the item from existing list
     private fun removeFromList(bb: BarcodeBean) {
         val posToRemove = bb.barcode
-        var next: Int = 0
+        val posPrice: Int = bb.quantity
+
+
         val it = barcodeBeanList?.iterator()
         if (it != null) {
             while (it.hasNext()) {
                 val bbean: BarcodeBean = it.next()
                 if (bbean.barcode == posToRemove) {
                     it.remove()
-                } else {
-                    next = next.plus(bbean.quantity)
-                    total_ticketvalue?.value = next
+
                 }
 
 
             }
+
         }
+
+        count_ = count_!!.minus(posPrice)
+        total_ticketvalue?.value = count_
+        println("updated price ${total_ticketvalue?.value.toString()}")
+
 
     }
 
@@ -231,5 +263,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun closeKeyboard() {
+        val view = this.currentFocus
+        if (view != null) {
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+    }
 
 }

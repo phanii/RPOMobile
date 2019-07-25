@@ -9,4 +9,5 @@
     <string name="total_number_of_items_scanned_so_far">Total number of items scanned so far</string>
     <string name="total_number_of_quantity">Total number of quantity</string>
     <string name="checkpermissions">Check application permissions and accept to read the data</string>
+    <string name="finishedsendignmail">Finished sending email...</string>
 </resources>

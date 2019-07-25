@@ -4,9 +4,11 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Parcelable
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.Toast
 import com.google.gson.Gson
 import com.rpo.mobile.modal.Output
@@ -42,10 +44,17 @@ class NextActivity : AppCompatActivity() {
 
 
         slidebutton.setOnClickListener {
-            //            count = count!! + 1
-            output = Output(desc.text.toString(), arraylist)
+            if (isEmailValid(desc.text.toString())) {
 
-            requestNewPermissions()
+                //            count = count!! + 1
+                output = Output(desc.text.toString(), arraylist)
+                val content = Gson().toJson(output)
+
+                sendEmail(content)
+            } else {
+                Toast.makeText(this, "Enter email id ", Toast.LENGTH_SHORT).show()
+            }
+            //requestNewPermissions()
         }
 
 
@@ -126,5 +135,33 @@ class NextActivity : AppCompatActivity() {
 
     }
 
+    protected fun sendEmail(mailbody: String) {
+        val to = desc.text.toString()
 
+
+        Log.i("Send email", "")
+        val TO = arrayOf("")
+        val CC = arrayOf("")
+        val emailIntent = Intent(Intent.ACTION_SEND)
+        TO[0] = to
+        emailIntent.data = Uri.parse("mailto:")
+        emailIntent.type = "text/plain"
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO)
+        emailIntent.putExtra(Intent.EXTRA_CC, CC)
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject")
+        emailIntent.putExtra(Intent.EXTRA_TEXT, mailbody)
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."))
+            finish()
+            Log.i(getString(R.string.finishedsendignmail), "")
+        } catch (ex: android.content.ActivityNotFoundException) {
+            Toast.makeText(this@NextActivity, "There is no email client installed.", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+    fun isEmailValid(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
 }
