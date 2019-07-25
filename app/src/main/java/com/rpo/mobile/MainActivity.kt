@@ -1,5 +1,6 @@
 package com.rpo.mobile
 
+import android.arch.lifecycle.MutableLiveData
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -26,12 +27,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     var count: Int? = 0
-
+    var count_: Int? = 0
     val afterUniqueset = ArrayList<BarcodeBean>()
     private var barcodeBeanList: ArrayList<BarcodeBean>? = null
     private var adapter: BarcodeAdapter? = null
     private var uniqueSet: Set<BarcodeBean>? = null
     private lateinit var barcodehashmap: HashMap<String, BarcodeBean>
+    var total_ticketvalue: MutableLiveData<Int>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         barcodeBeanList!!.clear()
         barcodehashmap = hashMapOf()
         uniqueSet = HashSet(barcodeBeanList)
+        total_ticketvalue = MutableLiveData()
         loadData()
         addButton.setOnClickListener {
 
@@ -57,6 +60,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
         barcodebutton.setOnClickListener { openScanner() }
+        total_ticketvalue!!.observe(this, android.arch.lifecycle.Observer {
+
+            total_value.text = it.toString()
+
+        })
 
     }
 
@@ -102,6 +110,9 @@ class MainActivity : AppCompatActivity() {
         afterUniqueset.clear()
 
         barcodeBeanList?.add(BarcodeBean(barcodenumber, 1))
+
+        count_ = count_!!.plus(1)
+        total_ticketvalue?.value = count_
 
 
         val uniqueSet = HashSet<BarcodeBean>(barcodeBeanList)
@@ -183,13 +194,19 @@ class MainActivity : AppCompatActivity() {
     //remove the item from existing list
     private fun removeFromList(bb: BarcodeBean) {
         val posToRemove = bb.barcode
+        var next: Int = 0
         val it = barcodeBeanList?.iterator()
         if (it != null) {
             while (it.hasNext()) {
                 val bbean: BarcodeBean = it.next()
                 if (bbean.barcode == posToRemove) {
                     it.remove()
+                } else {
+                    next = next.plus(bbean.quantity)
+                    total_ticketvalue?.value = next
                 }
+
+
             }
         }
 
